@@ -1,4 +1,6 @@
 TestAnimals::Application.routes.draw do
+  resources :questions
+
   resources :animals
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -47,3 +47,4 @@ end
 gem 'inherited_resources'
 
 gem 'paperclip'
+gem 'cucumber-rails'
