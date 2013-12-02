@@ -47,4 +47,4 @@ end
 gem 'inherited_resources'
 
 gem 'paperclip'
-gem 'cucumber-rails'
+gem 'cucumber-rails', :require => false
