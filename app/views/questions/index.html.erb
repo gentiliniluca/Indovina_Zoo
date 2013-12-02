@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th>Value</th>
+      <th>Animal 1</th>
+      <th>Animal 2</th>
       <th>Name</th>
       <th></th>
       <th></th>
@@ -15,8 +17,12 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.value %></td>
-        <td><%= question.animal_1.name %></td>
-        <td><%= question.animal_2.name %></td>
+	<% if question.animal_1 != nil %>
+        <td><%= question.animal_1.name %></td> 
+	<% end %>       
+	<% if question.animal_2 != nil %>	
+	<td><%= question.animal_2.name %></td>
+	<% end %>
 		<td><%= question.name %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
