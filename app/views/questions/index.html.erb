@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Value</th>
+      <th>Name</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
         <td><%= question.value %></td>
         <td><%= question.animal_1.name %></td>
         <td><%= question.animal_2.name %></td>
+		<td><%= question.name %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
