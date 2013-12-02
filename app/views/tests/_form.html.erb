@@ -15,6 +15,21 @@
     <%= f.label :level %><br>
     <%= f.number_field :level %>
   </div>
+
+	<div class="field">
+      <%= f.label :question_id_1 %><br>
+      <%= select_tag :question_id_1, options_from_collection_for_select(Question.all, :id, :name) %>
+    </div>
+    <div class="field">
+      <%= f.label :question_id_2 %><br>
+      <%= select_tag :question_id_2, options_from_collection_for_select(Question.all, :id, :name) %>
+    </div>
+    <div class="field">
+      <%= f.label :question_id_3 %><br>
+      <%= select_tag :question_id_3, options_from_collection_for_select(Question.all, :id, :name) %>
+    </div>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>
