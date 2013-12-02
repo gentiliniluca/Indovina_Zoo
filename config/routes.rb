@@ -1,5 +1,7 @@
 TestAnimals::Application.routes.draw do
+
   get "welcome/index"
+
   resources :test_questions
 
   resources :tests
