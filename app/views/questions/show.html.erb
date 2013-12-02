@@ -3,6 +3,8 @@
 <p>
   <strong>Value:</strong>
   <%= @question.value %>
+  <%= image_tag @question.animal_1.avatar.url(:thumb) %>
+  <%= image_tag @question.animal_2.avatar.url(:thumb) %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

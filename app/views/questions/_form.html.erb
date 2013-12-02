@@ -16,8 +16,12 @@
     <%= f.number_field :value %>
   </div>
     <div class="field">
-      <%= f.label :animal_id %><br>
-      <%= f.select :animal_id, options_from_collection_for_select(Animal.all, :id, :name) %>
+      <%= f.label :animal_id_1 %><br>
+      <%= f.select :animal_id_1, options_from_collection_for_select(Animal.all, :id, :name) %>
+    </div>
+    <div class="field">
+      <%= f.label :animal_id_2 %><br>
+      <%= f.select :animal_id_2, options_from_collection_for_select(Animal.all, :id, :name) %>
     </div>
   <div class="actions">
     <%= f.submit %>
