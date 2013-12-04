@@ -49,8 +49,9 @@ ActiveRecord::Schema.define(version: 20131204132907) do
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "animal_id_2"
+    t.integer  "animal_id_1"
     t.string   "name"
+    t.integer  "animal_id_2"
   end
 
   add_index "questions", ["animal_id_2"], name: "index_questions_on_animal_id_2"
