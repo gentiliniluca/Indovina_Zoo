@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20131202111132) do
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "animal_id_1"
     t.integer  "animal_id_2"
     t.string   "name"
   end
