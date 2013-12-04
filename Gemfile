@@ -48,3 +48,6 @@ gem 'inherited_resources'
 
 gem 'paperclip'
 gem 'cucumber-rails', :require => false
+
+# Use devise 
+gem 'devise'

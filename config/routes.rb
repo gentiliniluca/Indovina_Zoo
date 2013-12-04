@@ -1,5 +1,6 @@
 TestAnimals::Application.routes.draw do
 
+  devise_for :admins
   get "welcome/index"
 
   resources :test_questions
