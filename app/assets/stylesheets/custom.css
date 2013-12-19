@@ -1,8 +1,24 @@
+body {
+	background-image: url(/images/giungla.jpg);
+}
+
 .frijole {
 	font-family: 'Frijole', cursive;
 	font-size: 100px;
 }
 
-#welcomeImage {
-	width: 80%;
+.container {
+	background-color: rgba(218, 253, 218, 0.6);
+}
+
+#play {
+	width: 10%;
+	margin: auto;
+}
+
+@media (min-width: 992px) {
+	#welcomeImage {
+		width: 80%;
+		margin: auto;
+	}
 }
