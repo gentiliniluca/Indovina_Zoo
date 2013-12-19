@@ -7,7 +7,8 @@ class TestsController < InheritedResources::Base
      question.test_questions.create(test_id: test.id)   
     end
 
-   redirect_to test_questions_path
+   #redirect_to test_questions_path
+   redirect_to tests_path
   end
 
 

@@ -1,1 +1,7 @@
-<%= @levels %>
+<%= form_tag :controller => :game, :action => :level do %>
+	<% @levels.each do |level| %>
+		<%= radio_button_tag "level", level.level, "true" %>
+		<%= level.level%>
+		<br/>
+	<% end %>
+<% end %>
