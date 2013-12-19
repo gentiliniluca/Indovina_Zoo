@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204132907) do
+ActiveRecord::Schema.define(version: 20131219114034) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20131204132907) do
     t.datetime "updated_at"
     t.integer  "animal_id_2"
     t.string   "name"
+    t.integer  "animal_id_1"
   end
 
+  add_index "questions", ["animal_id_1"], name: "index_questions_on_animal_id_1"
   add_index "questions", ["animal_id_2"], name: "index_questions_on_animal_id_2"
 
   create_table "test_questions", force: true do |t|
