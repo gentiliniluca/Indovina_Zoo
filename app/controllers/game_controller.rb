@@ -4,18 +4,26 @@ class GameController < InheritedResources::Base
   end
   
   def play
-    set_level
-    @test = Test.selectTest @level
-    @questions = @test.questions
-    
-    @animals = Hash.new
-    @questions.each do |question|
+    set_id
+    if @id == 0
+      set_level
+      @test = Test.selectTest @level
+      @question = @test.questions[0]
       if rand(2) == 1
-        @animals[question] = question.animal_1
+        @result_animal = @question.animal_1
       else
-        @animals[question] = question.animal_2
+        @result_animal = @question.animal_2
+      end
+    else
+      @test = Test.find(params[:test_id])
+      @question = @test.questions[@id]
+      if rand(2) == 1
+        @result_animal = @question.animal_1
+      else
+        @result_animal = @question.animal_2
       end
     end
+    @id = @id + 1
   end
   
   def result
@@ -31,6 +39,10 @@ class GameController < InheritedResources::Base
   end
   
   private
+  
+  def set_id
+    @id = params[:id].to_i
+  end
   
   def set_level
     @level = params[:level]
