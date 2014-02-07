@@ -1,0 +1,18 @@
+<%= form_tag :controller => :game, :action => :result do %>
+	<%= hidden_field_tag "test", @test %>
+	<% @questions.each do |question| %>
+	  <%= label_tag question.to_s + "_" + question.animal_1.to_s, image_tag(question.animal_1.avatar, height: "200") %>
+		<%= label_tag question.to_s + "_" + question.animal_1.to_s, question.animal_1.name %>
+		<%= radio_button_tag question, question.animal_1 %>
+		<%= label_tag question.to_s + "_" + question.animal_2.to_s, image_tag(question.animal_2.avatar, height: "200") %>
+		<%= label_tag question.to_s + "_" + question.animal_2.to_s, question.animal_2.name %>
+		<%= radio_button_tag question, question.animal_2 %>
+		<%= label_tag question.to_s + "_skip", "Skip" %>
+		<%= radio_button_tag question, "skip", :default => "default" %>
+		<br/>
+		<%= audio_tag @animals[question].audio, :controls => true %>
+		<%= hidden_field_tag "result_" + question.to_s, @animals[question] %>
+		<br/>
+	<% end %>
+	<%= submit_tag "Confirm" %>
+<% end %>

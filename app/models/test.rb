@@ -5,4 +5,8 @@ class Test < ActiveRecord::Base
   def self.distinctLevels
     Test.order("level ASC").select("distinct level")
   end
+  
+  def self.selectTest level
+    Test.where("level = " + level).order("random()").first
+  end
 end
