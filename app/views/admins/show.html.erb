@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1>Showing Admin  </h1>
+ <div class="moduloDiv">
+
+<table class="tabella" >
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Mail </th>
+     <th></th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+
+      <tr>
+        <td><%= @admin.id %></td>
+        <td><%= @admin.email %></td>
+         <td>
+        <%= link_to 'Edit', edit_admin_path(@admin)    %>
+        <%= link_to 'Back', admins_path %>
+        </td>
+      </tr>
+
+  </tbody>
+</table>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="moduloDiv">
+<%= form_for(@admin) do |f| %>
+  <% if @admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @admin.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <table>
+      <tr>
+        <div class="field">
+           <td> <%= f.label :email %></td>
+            <td><%= f.text_field :email %>   </td>
+          </div>
+      </tr>
+      <tr>
+            <div class="field">
+              <td><%= f.label :password %></td>
+             <td> <%= f.password_field :password %></td>
+            </div>
+      </tr>
+
+          <tr><div class="actions">
+            <td><%= f.submit %></td>
+
+            <td>  <!--- se funziona ?????????????????????? -->
+              <%= link_to 'Show', @admin %> |
+              <%= link_to 'Back', admins_path %>
+            </td>
+
+
+          </div>
+      </tr>
+    </table>
+
+<% end %>
+</div>

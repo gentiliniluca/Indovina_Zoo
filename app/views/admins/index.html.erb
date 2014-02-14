@@ -1,0 +1,40 @@
+<h1>Listing admins</h1>
+
+<div class="moduloDiv">
+
+<table class="tabella" >
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Mail </th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.id %></td>
+        <td><%= admin.email %></td>
+        <td><%= link_to 'Show', admin %></td>
+        <!-- <td>    non modifico gli admin
+
+          <%=
+              #if admin.email== current_admin.email
+                link_to 'Edit', edit_admin_path(admin)
+              #end
+          %>
+
+        </td> -->
+        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+
+<br>
+
+
+
