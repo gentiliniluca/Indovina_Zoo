@@ -1,1 +1,8 @@
+<% for i in 0...@id %>
+	<br/>
+	Risposta <%= i+1 %> <%= @quiz_results[i] %>! L'animale era <%= @results_animals[i].name %> <%= image_tag @results_animals[i].avatar, height: "100" %>
+	<% if @quiz_results[i] == "errata" %>
+		ma tu hai scelto <%= @answers_animals[i].name %> <%= image_tag @answers_animals[i].avatar, height: "100" %>
+	<% end %>
+<% end %>
 <%= @result %>

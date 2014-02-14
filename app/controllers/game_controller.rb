@@ -44,10 +44,26 @@ class GameController < InheritedResources::Base
     set_answers
     set_results @id
     
+    @results_animals = Array.new
+    @answers_animals = Array.new
+    @quiz_results = Array.new
     @result = 0
     for i in 0...@id
+      @results_animals[i] = Animal.find(@results[i])
+      if @answers[i] != "skip"
+        @answers_animals[i] = Animal.find(@answers[i])
+      end
+      
       if @answers[i] == @results[i]
-        @result = @result + 1
+        @result = @result + 3
+        @quiz_results[i] = "corretta"
+      else
+        if @answers[i] == "skip"
+          @quiz_results[i] = "saltata"
+        else
+          @result = @result - 1
+          @quiz_results[i] = "errata"
+        end
       end
     end
   end
