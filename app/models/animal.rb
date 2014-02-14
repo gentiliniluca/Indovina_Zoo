@@ -7,4 +7,9 @@ class Animal < ActiveRecord::Base
   #                  :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
 
   has_many :questions
+
+  validates :name, presence: true, numericality: false
+  validates :avatar, presence: true
+  validates :audio, presence: true
+
 end
