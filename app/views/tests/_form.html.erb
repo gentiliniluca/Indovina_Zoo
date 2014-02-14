@@ -1,4 +1,5 @@
-<%= form_for(@test) do |f| %>
+<div class="moduloDiv">
+  <%= form_for(@test) do |f| %>
   <% if @test.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@test.errors.count, "error") %> prohibited this test from being saved:</h2>
@@ -11,26 +12,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :level %><br>
-    <%= f.number_field :level %>
-  </div>
+     <table>
+       <tr>
+              <div class="field">
+                <td><%= f.label :level %></td>
+                <td><%= f.number_field :level %> </td>
+              </div>
+       </tr>
+       <tr>
+                <div class="field">
+                 <td> <%= f.label :question_id_1 %></td>
+                  <td><%= select_tag :question_id_1, options_from_collection_for_select(Question.all, :id, :name) %></td>
+                </div>
+       </tr >
+       <tr>
+                <div class="field">
+                  <td><%= f.label :question_id_2 %></td>
+                  <td><%= select_tag :question_id_2, options_from_collection_for_select(Question.all, :id, :name) %>  </td>
+                </div>
+       </tr>
+       <tr>
+                <div class="field">
+                  <td><%= f.label :question_id_3 %></td>
+                  <td><%= select_tag :question_id_3, options_from_collection_for_select(Question.all, :id, :name) %>  </td>
+                </div>
+       </tr>
+       <tr>
+  
+              <div class="actions">
+                <td><%= f.submit %>  </td>
+                <td>
+                  <%= link_to 'Show', @test %> |
+                  <%= link_to 'Back', tests_path %>
+                </td>
+              </div>
+       </tr>
 
-	<div class="field">
-      <%= f.label :question_id_1 %><br>
-      <%= select_tag :question_id_1, options_from_collection_for_select(Question.all, :id, :name) %>
-    </div>
-    <div class="field">
-      <%= f.label :question_id_2 %><br>
-      <%= select_tag :question_id_2, options_from_collection_for_select(Question.all, :id, :name) %>
-    </div>
-    <div class="field">
-      <%= f.label :question_id_3 %><br>
-      <%= select_tag :question_id_3, options_from_collection_for_select(Question.all, :id, :name) %>
-    </div>
-  
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+     </table>
 <% end %>
+
+
+    </div>

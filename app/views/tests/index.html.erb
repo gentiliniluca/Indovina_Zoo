@@ -1,8 +1,11 @@
 <h1>Listing tests</h1>
 
-<table>
+<div class="moduloDiv">
+
+  <table class="tabella" >
   <thead>
     <tr>
+      <th>Id</th>
       <th>Level</th>
       <th></th>
       <th></th>
@@ -13,15 +16,25 @@
   <tbody>
     <% @tests.each do |test| %>
       <tr>
+        <td><%= test.id %></td>
         <td><%= test.level %></td>
         <td><%= link_to 'Show', test %></td>
         <td><%= link_to 'Edit', edit_test_path(test) %></td>
         <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+  <tr>
+    <td>
+      <%= link_to 'New Test', new_test_path %>
+    </td>
+  </tr>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Test', new_test_path %>
+
+
+
+    </div>

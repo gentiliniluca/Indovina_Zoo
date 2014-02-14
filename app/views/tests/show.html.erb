@@ -1,9 +1,32 @@
+
+
 <p id="notice"><%= notice %></p>
+<h1>Showing Test  </h1>
+<div class="moduloDiv">
 
-<p>
-  <strong>Level:</strong>
-  <%= @test.level %>
-</p>
+  <table class="tabella" >
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Level </th>
 
-<%= link_to 'Edit', edit_test_path(@test) %> |
-<%= link_to 'Back', tests_path %>
+      <th></th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+      <td><%= @test.id %></td>
+      <td><%= @test.level %></td>
+      <td>
+        <%= link_to 'Edit', edit_test_path(@test)    %>
+        <%= link_to 'Back', tests_path %>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>

@@ -1,15 +1,36 @@
+
+
+
 <p id="notice"><%= notice %></p>
+<h1>Showing Question  </h1>
+<div class="moduloDivGrande">
 
-<p>
-  <strong>Value:</strong>
-  <%= @question.value %>
-  <%= image_tag @question.animal_1.avatar.url(:thumb) %>
-  <%= image_tag @question.animal_2.avatar.url(:thumb) %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @question.name %>
-</p>
+  <table class="tabella" >
+    <thead>
+    <tr>
+      <th>Value</th>
+      <th>Image 1 </th>
+      <th>Image 2 </th>
+      <th>Name</th>
+      <th></th>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+      <td><%= @question.value %></td>
+      <td><%= image_tag @question.animal_1.avatar.url(:thumb) %></td>
+      <td><%= image_tag @question.animal_2.avatar.url(:thumb) %></td>
+      <td><%= @question.name %></td>
+      <td>
+        <%= link_to 'Edit', edit_question_path(@question) %> |
+        <%= link_to 'Back', questions_path %>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>

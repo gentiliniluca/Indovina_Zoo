@@ -1,4 +1,5 @@
-<%= form_for(@question) do |f| %>
+<div class="moduloDiv">
+  <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -11,23 +12,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
-    <div class="field">
-      <%= f.label :animal_id_1 %><br>
-      <%= f.select :animal_id_1, options_from_collection_for_select(Animal.all, :id, :name) %>
+      <table>
+        <tr>
+              <div class="field">
+                <td><%= f.label :value %></td>
+                <td><%= f.number_field :value %>        </td>
+              </div>
+        </tr>
+        <tr>
+                <div class="field">
+                  <td><%= f.label :animal_id_1 %></td>
+                  <td><%= f.select :animal_id_1, options_from_collection_for_select(Animal.all, :id, :name) %> </td>
+                </div>
+        </tr>
+        <tr>
+                <div class="field">
+                  <td><%= f.label :animal_id_2 %></td>
+                  <td><%= f.select :animal_id_2, options_from_collection_for_select(Animal.all, :id, :name) %>   </td>
+                </div>
+        </tr>
+        <tr>
+            <div class="field">
+                  <td><%= #f.label :name
+                  %> <b>Question Name</b>
+                  </td>
+                  <td><%= f.text_field :name %>  </td>
+                </div>
+        </tr>
+        <tr><div class="actions">
+          <td><%= f.submit %></td>
+
+          <td>  <!--- se funziona ?????????????????????? -->
+            <%= link_to 'Show', @question %> |
+            <%= link_to 'Back', questions_path %>
+          </td>
+
+
+        </div>
+        </tr>
+
+            <%end%>
+  </table>
+
+
+
+
     </div>
-    <div class="field">
-      <%= f.label :animal_id_2 %><br>
-      <%= f.select :animal_id_2, options_from_collection_for_select(Animal.all, :id, :name) %>
-    </div>
-<div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
