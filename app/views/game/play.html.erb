@@ -19,10 +19,10 @@ function timer() {
 
 
 <div class="moduloDivGrande"  style="width: 800px">
-
+	<%= form_tag :controller => :game, :action => @action do %>
   <table class="tabella" >
     <tr>
-                <%= form_tag :controller => :game, :action => @action do %>
+                
           <td style="vertical-align: middle">
             <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
             <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
@@ -60,6 +60,7 @@ function timer() {
                     <% end %>
                     <td><%= submit_tag "Confirm" %> </td>
           </tr>
-                <% end %>
-      </table>
+          </table>
+        <% end %>
+      
     </div>

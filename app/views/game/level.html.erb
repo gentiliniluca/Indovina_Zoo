@@ -1,9 +1,10 @@
 
 <div class="moduloDiv" >
 
-          <table>
+          
 
 <%= form_tag :controller => :game, :action => :play do %>
+	<table>
 	<% @levels.each do |level| %>
                     <tr>
                             <td><%= radio_button_tag "level", level.level, "true" %>
@@ -18,7 +19,6 @@
                                 <%= submit_tag "Select level" %>
                             </div></td>
                   </tr>
-<% end %>
-
-  </table>
+	</table>      
+<% end %>  
 </div>
