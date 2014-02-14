@@ -4,4 +4,7 @@ class Question < ActiveRecord::Base
 
   has_many :test_questions 
   has_many :tests, :through => :test_questions
+
+  validates :value, presence: true, numericality: true
+  validates :name, presence: true
 end

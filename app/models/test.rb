@@ -9,4 +9,7 @@ class Test < ActiveRecord::Base
   def self.selectTest level
     Test.where("level = " + level).order("random()").first
   end
+
+  validates :level, presence: true, numericality: true
+
 end
