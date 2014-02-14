@@ -16,28 +16,50 @@ function timer() {
 }
 </script>
 
-<span id="timer">30 secs</span>
 
-<%= form_tag :controller => :game, :action => @action do %>
-  <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
-	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
-	<%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
-	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
-	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
-	<%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
-	<%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
-	<%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
-	<br/>
-	<%= audio_tag @results[@id].audio, :controls => true %>
-	<%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
-	<br/>
-	<%= hidden_field_tag "test_id", @test.id %>
-	<%= hidden_field_tag :id, (@id + 1) %>
-	<%= hidden_field_tag :time, @time %>
-	
-	<% for i in 0...@id %>
-		<%= hidden_field_tag "result_" + i.to_s, @results[i] %>
-		<%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
-	<% end %>
-	<%= submit_tag "Confirm" %>
-<% end %>
+
+<div class="moduloDivGrande"  style="width: 800px">
+
+  <table class="tabella" >
+    <tr>
+                <%= form_tag :controller => :game, :action => @action do %>
+          <td style="vertical-align: middle">
+            <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
+            <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
+          </td>
+                  <td style="vertical-align: middle">
+                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
+                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
+                        <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
+                  </td>
+            <td style="vertical-align: middle">
+                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
+                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
+                    <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
+             </td>
+
+
+          <td style="vertical-align: middle">
+            <span id="timer">30 secs</span>
+          </td>
+        </tr>
+          <tr>
+          <td colspan="3">
+                    <%= audio_tag @results[@id].audio, :controls => true %>
+                    <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
+          </td>
+          </tr>
+          <tr>
+                    <%= hidden_field_tag "test_id", @test.id %>
+                    <%= hidden_field_tag :id, (@id + 1) %>
+                    <%= hidden_field_tag :time, @time %>
+
+                    <% for i in 0...@id %>
+                        <%= hidden_field_tag "result_" + i.to_s, @results[i] %>
+                        <%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
+                    <% end %>
+                    <td><%= submit_tag "Confirm" %> </td>
+          </tr>
+                <% end %>
+      </table>
+    </div>

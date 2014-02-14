@@ -1,8 +1,18 @@
-<% for i in 0...@id %>
-	<br/>
-	Risposta <%= i+1 %> <%= @quiz_results[i] %>! L'animale era <%= @results_animals[i].name %> <%= image_tag @results_animals[i].avatar, height: "100" %>
-	<% if @quiz_results[i] == "errata" %>
-		ma tu hai scelto <%= @answers_animals[i].name %> <%= image_tag @answers_animals[i].avatar, height: "100" %>
-	<% end %>
-<% end %>
-<%= @result %>
+<div class="moduloDivGrande"  style="width: 800px">
+
+  <table class="tabella" >
+
+    <% for i in 0...@id %>
+        <tr>
+        <td>Risposta <%= i+1 %> <%= @quiz_results[i] %>! L'animale era <%= @results_animals[i].name %> <%= image_tag @results_animals[i].avatar, height: "100" %></td>
+        <% if @quiz_results[i] == "errata" %>
+           <td> ma tu hai scelto <%= @answers_animals[i].name %> <%= image_tag @answers_animals[i].avatar, height: "100" %></td>
+        <% end %>
+
+        </tr>
+   <% end %>
+    <tr>
+<td>Punteggio: <%= @result %>  </td>
+    </tr>
+      </table>
+    </div>
