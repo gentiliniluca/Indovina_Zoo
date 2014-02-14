@@ -1,4 +1,10 @@
 class GameController < InheritedResources::Base
+  
+  RIGHT = "right"
+  WRONG = "wrong"
+  SKIP = "skip"
+  TIMEOUT = "timeout"
+  
   def level
     @levels = Test.distinctLevels
   end
@@ -23,21 +29,9 @@ class GameController < InheritedResources::Base
     else
       @action = :result
     end
-  end
-
-=begin
-  def result
-    set_answer
     
-    @result = 0
-    @keys = @answers.keys
-    @keys.each do |key|
-      if @answers[key] == @results[key]
-        @result = @result + 10
-      end
-    end
+    @time = Time.now
   end
-=end
 
   def result
     set_id
@@ -50,7 +44,7 @@ class GameController < InheritedResources::Base
     @result = 0
     for i in 0...@id
       @results_animals[i] = Animal.find(@results[i])
-      if @answers[i] != "skip"
+      if (@answers[i] != SKIP) && (@answers[i] != TIMEOUT)
         @answers_animals[i] = Animal.find(@answers[i])
       end
       
@@ -58,11 +52,16 @@ class GameController < InheritedResources::Base
         @result = @result + 3
         @quiz_results[i] = "corretta"
       else
-        if @answers[i] == "skip"
+        if @answers[i] == SKIP
           @quiz_results[i] = "saltata"
         else
-          @result = @result - 1
-          @quiz_results[i] = "errata"
+          if @answers[i] == TIMEOUT
+            @result = @result - 1
+            @quiz_results[i] = "tempo scaduto"
+          else
+            @result = @result - 1
+            @quiz_results[i] = "errata"
+          end
         end
       end
     end
@@ -82,20 +81,10 @@ class GameController < InheritedResources::Base
     @test = Test.find(params[:test_id])
   end
   
-=begin
-  def set_answer
-    @keys = params.keys
-    @answers = Hash.new
-    @results = Hash.new
-    @keys.each do |key|
-      if key[0..6] == "result_"
-        @results[key[7..key.length]] = params[key]
-      else
-        @answers[key] = params[key]
-      end
-    end
+  def set_time
+    @new_time = Time.now
+    @old_time = Time.parse(params[:time])
   end
-=end
  
  def set_results id
    @results = Array.new
@@ -109,15 +98,23 @@ class GameController < InheritedResources::Base
    for i in 0...@id
      @answers[i] = params["answer_" + i.to_s]
    end
+   
+   set_time
+   if (@new_time - @old_time) < 30
+     @answers[@id-1] = params["answer_" + (@id-1).to_s]
+   else
+     @answers[@id-1] = TIMEOUT
+   end
+   
    @answers[@id] = params["answer_" + @id.to_s]
  end
  
  def set_random_animal
-  if rand(2) == 1
-    @results[@id] = @question.animal_1
-  else
-    @results[@id] = @question.animal_2
-  end
+   if rand(2) == 1
+     @results[@id] = @question.animal_1
+   else
+     @results[@id] = @question.animal_2
+   end
  end
   
 end
