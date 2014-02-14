@@ -7,4 +7,8 @@ class Question < ActiveRecord::Base
 
   validates :value, presence: true, numericality: true
   validates :name, presence: true
+  
+  validates_each :animal_2 do |record, attr, value|
+    record.errors.add(attr, ' != Animal 1') if value == record.animal_1
+  end
 end
