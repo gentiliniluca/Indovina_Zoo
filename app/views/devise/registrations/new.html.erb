@@ -1,9 +1,9 @@
 <h2>Sign up</h2>
 
 <div class="moduloDiv" >
-
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <table class="tabella"  >
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            
               <%= devise_error_messages! %>
 
          <tr>
@@ -20,9 +20,9 @@
         </tr>
         <tr>
               <td ><%= f.submit "Sign up" %></td>
+              </table>
             <% end %>
-    </tr>
 
 
-      </table>
+      
     </div>
