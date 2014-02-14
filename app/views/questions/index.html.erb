@@ -1,6 +1,7 @@
 <h1>Listing questions</h1>
+<div class="moduloDiv" style="width: 570px">
 
-<table>
+  <table class="tabella" >
   <thead>
     <tr>
       <th>Value</th>
@@ -29,9 +30,18 @@
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+  <tr>
+    <td>
+      <%= link_to 'New Question', new_question_path %>
+    </td>
+  </tr>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+
+
+
+    </div>

@@ -12,10 +12,16 @@ TestAnimals::Application.routes.draw do
   resources :questions
 
   resources :animals
+
+  resources :admins
   
   get 'level' => 'game#level'
   post 'play' => 'game#play'
   post 'result' => 'game#result'
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

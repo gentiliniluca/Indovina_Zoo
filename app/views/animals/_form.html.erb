@@ -1,3 +1,4 @@
+<div class="moduloDiv">
 <%= form_for(@animal) do |f| %>
   <% if @animal.errors.any? %>
     <div id="error_explanation">
@@ -11,19 +12,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
-  <div class="field">
-    <%= f.label :audio %><br>
-    <%= f.file_field :audio %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <table>
+        <tr>
+
+                  <div class="field">
+                  <td>  <%= f.label :name %></td>
+                  <td><%= f.text_field :name %></td>
+                  </div>
+           </tr>
+        <tr>
+                  <div class="field">
+                    <td><%= f.label :avatar %></td>
+                   <td> <%= f.file_field :avatar %></td>
+                  </div>
+        </tr>
+        <tr>
+                  <div class="field">
+                   <td> <%= f.label :audio %></td>
+                    <td><%= f.file_field :audio %> </td>
+                  </div>
+        </tr>
+        <tr>
+                 <td> <div class="actions">
+                    <%= f.submit %></div>
+                    </td>
+                   <td>
+                   <%= link_to 'Show', @animal %> |
+                   <%= link_to 'Back', animals_path %>
+
+                 </td>
+
+        </tr>
+
+
 <% end %>
+
+    </table>
+
+    </div>
