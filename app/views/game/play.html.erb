@@ -1,17 +1,21 @@
-<%= form_tag :controller => :game, :action => :play do %>
-  <%= label_tag @question.id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
-	<%= label_tag @question.id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
-	<%= radio_button_tag @question.id, @question.animal_1.id %>
-	<%= label_tag @question.id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
-	<%= label_tag @question.id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
-	<%= radio_button_tag @question.id, @question.animal_2.id %>
-	<%= label_tag @question.id.to_s + "_skip", "Skip" %>
-	<%= radio_button_tag @question.id, "skip", :default => "default" %>
+<%= form_tag :controller => :game, :action => @action do %>
+  <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
+	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
+	<%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
+	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
+	<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
+	<%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
+	<%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
+	<%= radio_button_tag "answer_" + @id.to_s, "skip", :default => "default" %>
 	<br/>
-	<%= audio_tag @result_animal.audio, :controls => true %>
-	<%= hidden_field_tag "result_" + @question.id.to_s, @result_animal.id %>
+	<%= audio_tag @results[@id].audio, :controls => true %>
+	<%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
 	<br/>
 	<%= hidden_field_tag "test_id", @test.id %>
-	<%= hidden_field_tag "id", @id %>
+	<%= hidden_field_tag :id, (@id + 1) %>
+	<% for i in 0...@id %>
+		<%= hidden_field_tag "result_" + i.to_s, @results[i] %>
+		<%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
+	<% end %>
 	<%= submit_tag "Confirm" %>
 <% end %>

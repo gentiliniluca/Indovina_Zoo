@@ -5,27 +5,27 @@ class GameController < InheritedResources::Base
   
   def play
     set_id
+    set_results @id
+    
     if @id == 0
       set_level
       @test = Test.selectTest @level
-      @question = @test.questions[0]
-      if rand(2) == 1
-        @result_animal = @question.animal_1
-      else
-        @result_animal = @question.animal_2
-      end
     else
-      @test = Test.find(params[:test_id])
-      @question = @test.questions[@id]
-      if rand(2) == 1
-        @result_animal = @question.animal_1
-      else
-        @result_animal = @question.animal_2
-      end
+      set_answers
+      set_test
     end
-    @id = @id + 1
+    
+    @question = @test.questions[@id]
+    set_random_animal
+    
+    if @id < (@test.questions.length - 1)
+      @action = :play
+    else
+      @action = :result
+    end
   end
-  
+
+=begin
   def result
     set_answer
     
@@ -34,6 +34,20 @@ class GameController < InheritedResources::Base
     @keys.each do |key|
       if @answers[key] == @results[key]
         @result = @result + 10
+      end
+    end
+  end
+=end
+
+  def result
+    set_id
+    set_answers
+    set_results @id
+    
+    @result = 0
+    for i in 0...@id
+      if @answers[i] == @results[i]
+        @result = @result + 1
       end
     end
   end
@@ -48,6 +62,11 @@ class GameController < InheritedResources::Base
     @level = params[:level]
   end
   
+  def set_test
+    @test = Test.find(params[:test_id])
+  end
+  
+=begin
   def set_answer
     @keys = params.keys
     @answers = Hash.new
@@ -60,5 +79,29 @@ class GameController < InheritedResources::Base
       end
     end
   end
+=end
+ 
+ def set_results id
+   @results = Array.new
+   for i in 0...id
+     @results[i] = params["result_" + i.to_s]
+   end
+ end
+ 
+ def set_answers
+   @answers = Array.new
+   for i in 0...@id
+     @answers[i] = params["answer_" + i.to_s]
+   end
+   @answers[@id] = params["answer_" + @id.to_s]
+ end
+ 
+ def set_random_animal
+  if rand(2) == 1
+    @results[@id] = @question.animal_1
+  else
+    @results[@id] = @question.animal_2
+  end
+ end
   
 end
