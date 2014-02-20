@@ -16,7 +16,7 @@
        <tr>
               <div class="field">
                 <td><%= f.label :level %></td>
-                <td><%= f.number_field :level %> </td>
+                <td><%= f.number_field :level, in: 1..10 %> </td>
               </div>
        </tr>
        <tr>
