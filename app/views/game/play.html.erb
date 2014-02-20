@@ -4,7 +4,8 @@
 	var timer;
 	var distance;
 	var end = new Date();
-	end.setSeconds(end.getSeconds() + 30);
+	var totalTime = <%= GameController::TIMER %>;
+	end.setSeconds(end.getSeconds() + totalTime);
 	
 	function showRemaining()
 	{				 
@@ -15,14 +16,30 @@
 		 	distance = 0; 			 			 			 					 				 
 	 		clearInterval(timer);	 	
 	 	} 
+	 	
+	 	var countdownElement = document.getElementById('timer');
+	 	var timerBar = document.getElementById('timerBar');
+	 	var percentage = document.getElementById('percentage');	 	
+	 	
+	 	if (distance <= ((totalTime*1000)/2)) {
+	 		countdownElement.style.color = "orange";
+	 		timerBar.setAttribute("class", "progress-bar progress-bar-warning");
+	 	}
+	 	
+	 	if (distance <= ((totalTime*1000)/4)) {
+	 		countdownElement.style.color = "red";
+	 		timerBar.setAttribute("class", "progress-bar progress-bar-danger");
+	 	}
 	 		 
 	 	var seconds = Math.floor( (distance % _minute) / _second );
-	 	var milliseconds = distance % _second;
-	
-	 	var countdownElement = document.getElementById('timer');
+	 	var milliseconds = distance % _second;	 	
 	 
 	  	countdownElement.innerHTML = seconds + 's ' +
 				                      milliseconds + 'ms';
+      	percentage.innerHTML = seconds + 's ' ;
+      	
+      	timerBar.style.width = ((distance/(totalTime*1000))*100)+"%";
+      	timerBar.setAttribute("aria-valuenow",((distance/(totalTime*1000))*100));
 	 	
 	 	if (distance == 0) {
 	 		if (document.forms[0].id.value == 3)
@@ -34,39 +51,49 @@
 	}
 	
 	timer = setInterval("showRemaining()", 1);
+	
+	function stop() {		
+		clearInterval(timer);
+	}
 </script>
 
 <div class="moduloDivGrande"  style="width: 800px">
 	<%= form_tag :controller => :game, :action => @action do %>
   <table class="tabella" >
-    <tr>
-                
+    <tr>                
           <td style="vertical-align: middle">
             <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
             <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
           </td>
-                  <td style="vertical-align: middle">
-                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
-                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
-                        <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
-                  </td>
-            <td style="vertical-align: middle">
-                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
-                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
-                    <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
-             </td>
-
-
           <td style="vertical-align: middle">
-            <span id="timer"></span>
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
+                <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
           </td>
-        </tr>
-          <tr>
-          <td colspan="3">
+        <td style="vertical-align: middle">
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
+                <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
+         </td>          
+     </tr>
+     <tr>
+          <td id="audio" colspan="2">
                     <%= audio_tag @results[@id].audio, :controls => true %>
                     <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
           </td>
-          </tr>
+          <td style="vertical-align: middle">
+            	<div id="timer"></div>
+  		  </td>
+      </tr>
+      <tr>
+      	<td colspan="3">
+      		<div class="progress progress-striped active">
+			  	<div id="timerBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+			    	<span id="percentage"></span>
+			  	</div>
+			</div>
+      	</td>      	     	
+      </tr>	          
           <tr>
                     <%= hidden_field_tag "test_id", @test.id %>
                     <%= hidden_field_tag :id, (@id + 1) %>
