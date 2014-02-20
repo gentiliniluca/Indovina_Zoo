@@ -13,13 +13,14 @@ body {
 
 #startZone {
 	/*background-image: url(/images/indovinaZoo.jpg);*/
-    background-image: url(/images/sfondo1.png);
+  background-image: url(/images/sfondo1.png);
 	background-size: cover;
 	height: 700px;
+	margin-top: -20px;
 }
 
 #startButton {
-		margin-top: 290px;
+		margin: 290px auto;
   	text-align: center;
 }
 #startButton a:hover {
