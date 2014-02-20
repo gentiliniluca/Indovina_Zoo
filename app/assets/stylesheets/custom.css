@@ -57,3 +57,7 @@ td, th{
     margin:auto;
     background-color: #FFFFFF;
 }
+
+#audio {
+	width: 100px;
+}

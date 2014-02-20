@@ -37,48 +37,56 @@
 </script>
 
 <div class="moduloDivGrande"  style="width: 800px">
+	
 	<%= form_tag :controller => :game, :action => @action do %>
   <table class="tabella" >
     <tr>
-                
-          <td style="vertical-align: middle">
-            <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
-            <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
-          </td>
-                  <td style="vertical-align: middle">
-                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
-                        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
-                        <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
-                  </td>
-            <td style="vertical-align: middle">
-                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
-                    <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
-                    <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
-             </td>
+    	   
+			<td style="vertical-align: middle">
+				<%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
+				<%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
+			</td>
+			
+			<td style="vertical-align: middle">
+				<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
+				<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
+				<%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
+			</td>
+			
+			<td style="vertical-align: middle">
+				<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
+				<%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
+				<%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
+			</td>
+			
+			<td style="vertical-align: middle">
+				<span id="timer"></span>
+			</td>
+			
+		</tr>
+		<tr>
+			
+			<td colspan="2">
+				<%= audio_tag @results[@id].audio, :controls => true %>
+				<%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
+			</td>
+			
+		</tr>
+		<tr>
+			
+			<%= hidden_field_tag "test_id", @test.id %>
+			<%= hidden_field_tag :id, (@id + 1) %>
+			<%= hidden_field_tag :time, @time %>
 
-
-          <td style="vertical-align: middle">
-            <span id="timer"></span>
-          </td>
-        </tr>
-          <tr>
-          <td id="audio" colspan="3">
-                    <%= audio_tag @results[@id].audio, :controls => true %>
-                    <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
-          </td>
-          </tr>
-          <tr>
-                    <%= hidden_field_tag "test_id", @test.id %>
-                    <%= hidden_field_tag :id, (@id + 1) %>
-                    <%= hidden_field_tag :time, @time %>
-
-                    <% for i in 0...@id %>
-                        <%= hidden_field_tag "result_" + i.to_s, @results[i] %>
-                        <%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
-                    <% end %>
-                    <td><%= submit_tag "Confirm" %> </td>
-          </tr>
-          </table>
-        <% end %>
-      
-    </div>
+			<% for i in 0...@id %>
+				<%= hidden_field_tag "result_" + i.to_s, @results[i] %>
+				<%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
+			<% end %>
+			
+			<td><%= submit_tag "Confirm" %> </td>
+			
+		</tr>
+	</table>
+	<% end %>
+	
+</div>
