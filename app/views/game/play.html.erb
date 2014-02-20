@@ -15,28 +15,23 @@
 	 	if (distance <= 0) {
 		 	distance = 0; 			 			 			 					 				 
 	 		clearInterval(timer);	 	
-	 	} 
-	 	
-	 	var countdownElement = document.getElementById('timer');
+	 	}
+	 		 	
 	 	var timerBar = document.getElementById('timerBar');
 	 	var percentage = document.getElementById('percentage');	 	
 	 	
 	 	if (distance <= ((totalTime*1000)/2)) {
-	 		countdownElement.style.color = "orange";
 	 		timerBar.setAttribute("class", "progress-bar progress-bar-warning");
 	 	}
 	 	
-	 	if (distance <= ((totalTime*1000)/4)) {
-	 		countdownElement.style.color = "red";
+	 	if (distance <= ((totalTime*1000)/4)) {	 		
 	 		timerBar.setAttribute("class", "progress-bar progress-bar-danger");
 	 	}
 	 		 
 	 	var seconds = Math.floor( (distance % _minute) / _second );
 	 	var milliseconds = distance % _second;	 	
 	 
-	  	countdownElement.innerHTML = seconds + 's ' +
-				                      milliseconds + 'ms';
-      	percentage.innerHTML = seconds + 's ' ;
+	  	percentage.innerHTML = seconds + 's ' ;
       	
       	timerBar.style.width = ((distance/(totalTime*1000))*100)+"%";
       	timerBar.setAttribute("aria-valuenow",((distance/(totalTime*1000))*100));
@@ -83,10 +78,7 @@
           <td id="audio" colspan="2">
           	<%= audio_tag @results[@id].audio, :controls => true, :autoplay => true %>
             <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
-          </td>
-          <td style="vertical-align: middle">
-            	<div id="timer"></div>
-  		  </td>
+          </td>          
       </tr>
       <tr>
       	<td colspan="3">
