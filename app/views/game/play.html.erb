@@ -55,50 +55,55 @@
 <div class="moduloDivGrande"  style="width: 800px">
 	
 	<%= form_tag :controller => :game, :action => @action do %>
-  <table class="tabella" >
-    <tr>                
-          <td style="vertical-align: middle">
-            <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
-            <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
-          </td>
-          <td style="vertical-align: middle">
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
-                <br/>
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
-                <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
-          </td>
-        <td style="vertical-align: middle">
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
-                <br/>
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
-                <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
-         </td>          
+  <table class="tabella game" >
+    <tr>
+      <td>
+	      <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, :class => "img-thumbnail quiz") %>
+	      <br/>
+	      <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
+	      <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
+      </td>
+      <td>
+        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, :class => "img-thumbnail quiz") %>
+        <br/>
+        <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
+        <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
+       </td>          
      </tr>
      <tr>
-          <td id="audio" colspan="2">
-          	<%= audio_tag @results[@id].audio, :controls => true, :autoplay => true %>
-            <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
-          </td>          
+     	<td colspan="2">
+	      <%= label_tag "answer_" + @id.to_s + "_skip", "Skip" %>
+	      <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
+	    </td>
+     </tr>
+     <tr>
+      <td id="audio" colspan="2">
+      	<%= audio_tag @results[@id].audio, :controls => true, :autoplay => true %>
+        <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
+      </td>          
       </tr>
       <tr>
-      	<td colspan="3">
+      	<td colspan="2">
       		<div class="progress progress-striped active">
-			  	<div id="timerBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-			    	<span id="percentage"></span>
-			  	</div>
-			</div>
+				  	<div id="timerBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				    	<span id="percentage"></span>
+				  	</div>
+					</div>
       	</td>      	     	
       </tr>	          
           <tr>
-                    <%= hidden_field_tag "test_id", @test.id %>
-                    <%= hidden_field_tag :id, (@id + 1) %>
-                    <%= hidden_field_tag :time, @time %>
-
-                    <% for i in 0...@id %>
-                        <%= hidden_field_tag "result_" + i.to_s, @results[i] %>
-                        <%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
-                    <% end %>
-                    <td><%= submit_tag "Confirm" %> </td>
+	          <%= hidden_field_tag "test_id", @test.id %>
+	          <%= hidden_field_tag :id, (@id + 1) %>
+	          <%= hidden_field_tag :time, @time %>
+	
+	          <% for i in 0...@id %>
+	              <%= hidden_field_tag "result_" + i.to_s, @results[i] %>
+	              <%= hidden_field_tag "answer_" + i.to_s, @answers[i] %>
+	          <% end %>
+	          
+            <td colspan="2">
+            	<%= submit_tag "Confirm", :class => "btn btn-primary" %>
+            </td>
           </tr>
           </table>
         <% end %>

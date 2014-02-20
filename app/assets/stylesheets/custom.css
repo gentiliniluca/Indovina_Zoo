@@ -2,6 +2,10 @@ body {
 	background-image: url(/images/giungla.jpg);
 }
 
+input, label {
+	cursor: pointer;
+}
+
 .frijole {
 	font-family: 'Frijole', cursive;
 	font-size: 100px;
@@ -17,6 +21,8 @@ body {
 	background-size: cover;
 	height: 700px;
 	margin-top: -20px;
+	border-style: ridge;
+	border-color: #999999;
 }
 
 #startButton {
@@ -48,7 +54,6 @@ body {
 
 .tabella{
     width: 300;
-
 }
 
 td, th{
@@ -56,7 +61,31 @@ td, th{
     padding: 10px;
 }
 
-.moduloDiv{
+.game {
+	margin: 20px auto;
+}
+
+.game th {
+	vertical-align: middle;
+	text-align: center;
+	font-size: 2em;
+}
+
+.game td {
+	vertical-align: middle;
+	text-align: center;
+	font-size: 16px;
+}
+.game td.level {
+	text-align: left;
+	font-size: 18px;
+}
+
+.game img.quiz {
+	height: 200px !important;
+}
+
+.moduloDiv {
     border:2px solid;
     border-radius:25px;
     box-shadow: 7px 7px 5px #888888;
@@ -66,7 +95,7 @@ td, th{
     background-color: #FFFFFF;
 }
 
-.moduloDivGrande{
+.moduloDivGrande {
     border:2px solid;
     border-radius:25px;
     box-shadow: 7px 7px 5px #888888;

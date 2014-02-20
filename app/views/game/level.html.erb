@@ -6,13 +6,13 @@
           
 
 	<%= form_tag :controller => :game, :action => :play do %>
-	<table>
+	<table class="game">
 		
 		<% @levels.each do |level| %>
 		<tr>
-			<td>
+			<td class="level">
 				<%= radio_button_tag "level", level.level, "true" %>
-				<%= label_tag "level_" + level.level.to_s, level.level %>
+				<%= label_tag "level_" + level.level.to_s, "Difficoltà " + level.level.to_s %>
 			</td>
 		</tr>
 		<% end %>
@@ -26,6 +26,6 @@
 			</td>
 		</tr>
 		
-	</table>      
+	</table>     
 	<% end %>  
 </div>

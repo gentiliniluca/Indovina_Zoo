@@ -1,21 +1,22 @@
 <div class="moduloDivGrande"  style="width: 800px">
 	
-  <table class="tabella" >
+  <table class="tabella game">
+  	
+  	<tr>
+			<th>Punteggio: <%= @result %></th>
+    </tr>
   	
     <% for i in 0...@id %>
     <tr>
 	    <td>
-	    	Risposta <%= i+1 %> <%= @quiz_results[i] %>! L'animale era <%= @results_animals[i].name %> <%= image_tag @results_animals[i].avatar, height: "100" %>
+	    	<strong>Risposta <%= i+1 %> <%= @quiz_results[i] %>!</strong> L'animale era <%= @results_animals[i].name %> <%= image_tag @results_animals[i].avatar, :class => "img-thumbnail", height: "100" %>
 	    	<% if @quiz_results[i] == "errata" %>
-	    		ma tu hai scelto <%= @answers_animals[i].name %> <%= image_tag @answers_animals[i].avatar, height: "100" %>
+	    		ma tu hai scelto <%= @answers_animals[i].name %> <%= image_tag(@answers_animals[i].avatar, :class => "img-thumbnail", height: "100") %>
 	    	<% end %>
 	    </td>
 		</tr>
    	<% end %>
    	
-    <tr>
-			<td>Punteggio: <%= @result %>  </td>
-    </tr>
   </table>
 </div>
 <div id="newGameButton">
