@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
   has_many :test_questions 
   has_many :tests, :through => :test_questions
 
-  validates :value, presence: true, numericality: true
+  validates :value, presence: true, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 10 }
   validates :name, presence: true
   
   validates_each :animal_2 do |record, attr, value|

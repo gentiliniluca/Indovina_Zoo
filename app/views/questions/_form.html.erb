@@ -16,7 +16,7 @@
         <tr>
               <div class="field">
                 <td><%= f.label :value %></td>
-                <td><%= f.number_field :value %>        </td>
+                <td><%= f.number_field :value, in: 1..10 %>        </td>
               </div>
         </tr>
         <tr>
