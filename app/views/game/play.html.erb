@@ -62,12 +62,12 @@
             <%= radio_button_tag "answer_" + @id.to_s, GameController::SKIP, :default => "default" %>
           </td>
           <td style="vertical-align: middle">
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200") %>
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, image_tag(@question.animal_1.avatar, height: "200", :class => "img-circle") %>
                 <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_1.id.to_s, @question.animal_1.name %>
                 <%= radio_button_tag "answer_" + @id.to_s, @question.animal_1.id %>
           </td>
         <td style="vertical-align: middle">
-                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200") %>
+                <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, image_tag(@question.animal_2.avatar, height: "200", :class => "img-circle") %>
                 <%= label_tag "answer_" + @id.to_s + "_" + @question.animal_2.id.to_s, @question.animal_2.name %>
                 <%= radio_button_tag "answer_" + @id.to_s, @question.animal_2.id %>
          </td>          
