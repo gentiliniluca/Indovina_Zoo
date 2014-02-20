@@ -3,22 +3,27 @@
 
           
 
-<%= form_tag :controller => :game, :action => :play do %>
+	<%= form_tag :controller => :game, :action => :play do %>
 	<table>
-	<% @levels.each do |level| %>
-                    <tr>
-                            <td><%= radio_button_tag "level", level.level, "true" %>
-                                <%= level.level%>
-
-                        <% end %>
-                    </td>
-                </tr>
-                <tr>
-                         <td>   <%= hidden_field_tag :id, "0"%>
-                            <div class="actions">
-                                <%= submit_tag "Select level" %>
-                            </div></td>
-                  </tr>
+		
+		<% @levels.each do |level| %>
+		<tr>
+			<td>
+				<%= radio_button_tag "level", level.level, "true" %>
+				<%= label_tag "level_" + level.level.to_s, level.level %>
+			</td>
+		</tr>
+		<% end %>
+		
+		<tr>
+			<td>
+				<%= hidden_field_tag :id, "0"%>
+				<div class="actions">
+					<%= submit_tag "Select level" %>
+				</div>
+			</td>
+		</tr>
+		
 	</table>      
-<% end %>  
+	<% end %>  
 </div>
