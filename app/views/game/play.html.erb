@@ -44,7 +44,7 @@ function timer() {
           </td>
         </tr>
           <tr>
-          <td colspan="3">
+          <td id="audio" colspan="3">
                     <%= audio_tag @results[@id].audio, :controls => true %>
                     <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
           </td>

@@ -19,24 +19,14 @@
                 <td><%= f.number_field :level %> </td>
               </div>
        </tr>
+       <% for i in 1..TestsController::NTESTS %>
        <tr>
                 <div class="field">
-                 <td> <%= f.label :question_id_1 %></td>
-                  <td><%= select_tag :question_id_1, options_from_collection_for_select(Question.all, :id, :name) %></td>
+                 <td> <%= f.label "question_id_" + i.to_s %></td>
+                  <td><%= select_tag "question_id_" + i.to_s, options_from_collection_for_select(Question.all, :id, :name) %></td>
                 </div>
        </tr >
-       <tr>
-                <div class="field">
-                  <td><%= f.label :question_id_2 %></td>
-                  <td><%= select_tag :question_id_2, options_from_collection_for_select(Question.all, :id, :name) %>  </td>
-                </div>
-       </tr>
-       <tr>
-                <div class="field">
-                  <td><%= f.label :question_id_3 %></td>
-                  <td><%= select_tag :question_id_3, options_from_collection_for_select(Question.all, :id, :name) %>  </td>
-                </div>
-       </tr>
+       <% end %>
        <tr>
   
               <div class="actions">
