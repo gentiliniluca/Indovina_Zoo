@@ -16,6 +16,7 @@ body {
     background-image: url(/images/sfondo1.png);
 	background-size: cover;
 	height: 700px;
+	margin-top: -20px;
 }
 
 #startButton {
