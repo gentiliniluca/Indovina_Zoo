@@ -79,8 +79,8 @@
      </tr>
      <tr>
           <td id="audio" colspan="2">
-                    <%= audio_tag @results[@id].audio, :controls => true %>
-                    <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
+          	<%= audio_tag @results[@id].audio, :controls => true, :autoplay => true %>
+            <%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
           </td>
           <td style="vertical-align: middle">
             	<div id="timer"></div>

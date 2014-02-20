@@ -35,7 +35,7 @@
           <!--embed src="<%= @animal.audio.url %>" loop="infinite" autostart="true" hidden="true"-->
           <!--a href="<%= @animal.audio.url %>">Prova</a-->
           <!--audio controls autoplay src="<%= @animal.audio.url %>"></audio-->
-                <%= audio_tag(@animal.audio.url, :autoplay => true, :controls => true) %>
+                <%= audio_tag(@animal.audio.url, :controls => true) %>
          </td>
 
           <td>
