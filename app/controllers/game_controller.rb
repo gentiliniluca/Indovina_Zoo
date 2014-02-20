@@ -5,7 +5,7 @@ class GameController < InheritedResources::Base
   SKIP = "skip"
   TIMEOUT = "timeout"
   TIMER = 30
-  DELAY = 3
+  DELAY = 1
     
   def level
     @levels = Test.distinctLevels
