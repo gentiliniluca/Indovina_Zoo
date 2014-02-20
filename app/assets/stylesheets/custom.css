@@ -74,3 +74,27 @@ td, th{
     margin:auto;
     background-color: #FFFFFF;
 }
+
+#timer {
+	width:100px;
+	font-size: 20px;
+	color: green;
+}
+
+#audio {
+	width: 50px;
+}
+
+#timerBar {
+	width: 1000px;
+}
+
+.progress-bar {
+	-webkit-transition: width 0s linear !important;
+	transition: width 0s linear !important;
+}
+
+#percentage {
+	font-weight: bold;
+	color: black;
+}

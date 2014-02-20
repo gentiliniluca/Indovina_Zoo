@@ -21,16 +21,11 @@
       <td><%= @test.id %></td>
       <td><%= @test.level %></td>
       <td>
-      	<% @test.questions.each do |question| %>
-    			<%= question.name %>
-    			<br/>
-    		<% end %>
-    	</td>
-      <td>
         <%= link_to 'Edit', edit_test_path(@test)    %>
         <%= link_to 'Back', tests_path %>
       </td>
     </tr>
+
     </tbody>
   </table>
 

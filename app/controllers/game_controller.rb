@@ -4,7 +4,9 @@ class GameController < InheritedResources::Base
   WRONG = "wrong"
   SKIP = "skip"
   TIMEOUT = "timeout"
-  
+  TIMER = 30
+  DELAY = 1
+    
   def level
     @levels = Test.distinctLevels
   end
@@ -100,7 +102,7 @@ class GameController < InheritedResources::Base
    end
    
    set_time
-   if (@new_time - @old_time) < 30
+   if (@new_time - @old_time) < (TIMER + DELAY)
      @answers[@id-1] = params["answer_" + (@id-1).to_s]
    else
      @answers[@id-1] = TIMEOUT
