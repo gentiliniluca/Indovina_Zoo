@@ -1,22 +1,40 @@
 <script type="text/javascript">
-var count = 3000;
-
-var counter = setInterval(timer, 1);
-
-function timer() {
-  count = count - 1;
-  
-  if (count < 0) {
-     clearInterval(counter);
-     alert("Tempo scaduto!")
-     return;
-  }
- 
- document.getElementById("timer").innerHTML = count + " msecs";
-}
+	var _second = 1000;
+	var _minute = _second * 60;			
+	var timer;
+	var distance;
+	var end = new Date();
+	end.setSeconds(end.getSeconds() + 30);
+	
+	function showRemaining()
+	{				 
+	 	var now = new Date();
+	 	distance = end - now;
+	 	
+	 	if (distance <= 0) {
+		 	distance = 0; 			 			 			 					 				 
+	 		clearInterval(timer);	 	
+	 	} 
+	 		 
+	 	var seconds = Math.floor( (distance % _minute) / _second );
+	 	var milliseconds = distance % _second;
+	
+	 	var countdownElement = document.getElementById('timer');
+	 
+	  	countdownElement.innerHTML = seconds + 's ' +
+				                      milliseconds + 'ms';
+	 	
+	 	if (distance == 0) {
+	 		if (document.forms[0].id.value == 3)
+	 			alert("Tempo scaduto!\nIl quiz è terminato.\nVerrà visualizzato il riepilogo delle tue risposte");
+ 			else
+	 			alert("Tempo scaduto!\nVerrà visualizzata la domanda successiva.");
+	 		document.forms[0].submit();  	
+	 	}
+	}
+	
+	timer = setInterval("showRemaining()", 1);
 </script>
-
-
 
 <div class="moduloDivGrande"  style="width: 800px">
 	<%= form_tag :controller => :game, :action => @action do %>
@@ -40,7 +58,7 @@ function timer() {
 
 
           <td style="vertical-align: middle">
-            <span id="timer">30 secs</span>
+            <span id="timer"></span>
           </td>
         </tr>
           <tr>
