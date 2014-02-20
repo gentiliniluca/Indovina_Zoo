@@ -1,5 +1,7 @@
 class TestsController < InheritedResources::Base
   
+  before_action :authenticate_admin!
+  
   MAX = 3
   
   def create

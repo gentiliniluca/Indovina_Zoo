@@ -1,4 +1,6 @@
 class AdminsController < InheritedResources::Base
+  
+  before_action :authenticate_admin!
 
   protected
   def permitted_params
