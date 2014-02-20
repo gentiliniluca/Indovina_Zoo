@@ -12,14 +12,31 @@ body {
 }
 
 #startZone {
-	background-image: url(/images/indovinaZoo.jpg);
+	/*background-image: url(/images/indovinaZoo.jpg);*/
+    background-image: url(/images/sfondo1.png);
 	background-size: cover;
 	height: 700px;
 }
 
 #startButton {
-	margin-top: 200px;
+		margin-top: 290px;
+  	text-align: center;
 }
+#startButton a:hover {
+    /*margin-top: 290px;
+    text-align: center;*/
+    background: none;
+}
+
+#newGameButton {
+	text-align: center;
+	margin-top: 30px;
+}
+
+#newGameButton a:hover {
+	background: none;
+}
+
 
 @media (min-width: 992px) {
 	#welcomeImage {
@@ -56,8 +73,4 @@ td, th{
     width: 600px;
     margin:auto;
     background-color: #FFFFFF;
-}
-
-#audio {
-	width: 100px;
 }

@@ -67,7 +67,7 @@
 		<tr>
 			
 			<td colspan="2">
-				<%= audio_tag @results[@id].audio, :controls => true %>
+				<%= audio_tag @results[@id].audio, :controls => true, :autoplay => true %>
 				<%= hidden_field_tag "result_" + @id.to_s, @results[@id].id %>
 			</td>
 			

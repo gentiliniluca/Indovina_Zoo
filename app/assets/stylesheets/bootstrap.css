@@ -343,9 +343,16 @@ img {
 }
 
 .img-responsive {
-  display: block;
+  display: inline;
   height: auto;
   max-width: 100%;
+  text-decoration: none;
+}
+.img-responsive a:hover {
+    display: inline;
+    height: auto;
+    max-width: 100%;
+    text-decoration: none;
 }
 
 .img-rounded {
