@@ -22,7 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+https://www.codeship.io/projects/16bd10c0-7d1e-0131-5036-466f18fb45cd/status
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
