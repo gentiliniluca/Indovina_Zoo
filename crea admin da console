@@ -1,4 +1,5 @@
 inserimento amministratore da console
 
+
 u=Admin.new(:email => "lucaluca@luca.it", :password => "123456789", :password_confirmation => "123456789") 
 u.save!
